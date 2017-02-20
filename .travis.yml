@@ -14,3 +14,6 @@ script:
   - cd build
   - cmake ..
   - make  
+
+after_success:
+   - find . -executable -type f -print | while read app; do "$app"; done
