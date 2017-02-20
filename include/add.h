@@ -1,6 +1,6 @@
-#ifndef __ADD_H
-#define __ADD_H
+#ifndef INCLUDE_ADD_H_
+#define INCLUDE_ADD_H_
 
 int add(int x, int y);
 
-#endif
+#endif  // INCLUDE_ADD_H_
