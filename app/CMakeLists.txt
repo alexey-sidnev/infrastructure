@@ -1,5 +1,5 @@
-file(GLOB CPPS "*.cpp")
-file(GLOB HPPS "*.h")
+file(GLOB CPPS *.cpp)
+file(GLOB HPPS *.h *.hpp)
 
 include_directories(../include)
 
