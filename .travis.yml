@@ -4,6 +4,19 @@ python: '2.7'
 
 compiler:  
   - gcc
+  
+addons:
+    apt:
+        sources:
+            - llvm-toolchain-precise
+            - ubuntu-toolchain-r-test
+        packages:
+            - g++-5
+    
+install:
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cd ./3rdparty; wget --no-check-certificate http://cmake.org/files/v3.1/cmake-3.1.3-Linux-x86_64.tar.gz; tar -xzf cmake-3.1.3-Linux-x86_64.tar.gz; cd ..; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export CXX="g++-5" CC="gcc-5"; fi      
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export PATH=$PWD/3rdparty/cmake-3.1.3-Linux-x86_64/bin:$PATH; fi
 
 before_script:  
   - files=`find . -path ./3rdparty -prune -name \*.hpp -print -o -name \*.h -print -o -name \*.cpp -print -o -name \*.c -print | sed -e ':a;N;$!ba;s/\n/ /g'`
@@ -16,4 +29,4 @@ script:
   - make  
 
 after_success:
-   - find . -executable -type f -print | while read app; do "$app"; done
+   - find . -executable -type f -print | while read app; do printf "\n=========================================\nExecutable:\t$app\n=========================================\n"; "$app"; done

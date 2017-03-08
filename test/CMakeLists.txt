@@ -1,5 +1,5 @@
-file(GLOB CPPS "*.cpp")
-file(GLOB HPPS "*.h")
+file(GLOB CPPS *.cpp)
+file(GLOB HPPS *.h *.hpp)
 
 find_package( Threads )
 
