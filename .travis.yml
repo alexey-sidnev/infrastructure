@@ -26,7 +26,7 @@ script:
   - mkdir build
   - cd build
   - cmake ..
-  - make  
+  - make
 
 after_success:
    - find . -executable -type f -print | while read app; do printf "\n=========================================\nExecutable:\t$app\n=========================================\n"; "$app"; done
