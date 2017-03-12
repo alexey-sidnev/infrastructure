@@ -21,6 +21,7 @@ function(enable_cxx_compiler_flag_if_supported flag)
 endfunction()
 
 enable_cxx_compiler_flag_if_supported("-Wall")
+enable_cxx_compiler_flag_if_supported("-Werror")
 
 include_directories(include)
 
