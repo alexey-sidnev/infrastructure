@@ -20,7 +20,7 @@ install:
 
 before_script:  
   - files=`find . -path ./3rdparty -prune -name \*.hpp -print -o -name \*.h -print -o -name \*.cpp -print -o -name \*.c -print | sed -e ':a;N;$!ba;s/\n/ /g'`
-  - python ./3rdparty/utils/cpplint.py --filter=-legal/copyright,-runtime/threadsafe_fn,-build/include,-readability/utf8 $files
+  - python ./3rdparty/utils/cpplint.py $files
 
 script:   
   - mkdir build
