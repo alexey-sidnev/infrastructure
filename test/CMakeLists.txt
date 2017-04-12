@@ -5,7 +5,11 @@ file(GLOB HPPS ../include/*.h ../include/*.hpp)
 
 find_package(Threads)
 
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+if(MSVC)
+     #vc 2012 fix for vararg templates
+     ADD_DEFINITIONS (/D_VARIADIC_MAX=10)
+     MESSAGE(STATUS "MSVC: Set variadic max to 10 for MSVC compatibility")
+endif() 
 
 include_directories(../3rdparty/gtest/include)
 link_directories(${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
